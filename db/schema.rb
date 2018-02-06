@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206022520) do
+ActiveRecord::Schema.define(version: 20180206030456) do
 
   create_table "dict_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "字典明细" do |t|
     t.string "name", null: false, comment: "小类名称"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20180206022520) do
 
   create_table "dicts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "字典表" do |t|
     t.string "name", null: false, comment: "大类名称"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "物料基础表" do |t|
+    t.integer "type_id", null: false, comment: "设备ID(字典表ID)"
+    t.integer "name_id", null: false, comment: "设备名称ID(字典明细ID)"
+    t.string "specification", null: false, comment: "规格型号"
+    t.integer "unit_id", null: false, comment: "单位ID(字典明细ID)"
+    t.string "remark", comment: "备注"
+    t.string "updated_by", null: false, comment: "更新人"
+    t.integer "enabled", limit: 1, default: 0, null: false, comment: "是否启用 0:是 1:否"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
