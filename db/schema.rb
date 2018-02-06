@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205123054) do
+ActiveRecord::Schema.define(version: 20180206022520) do
+
+  create_table "dict_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "字典明细" do |t|
+    t.string "name", null: false, comment: "小类名称"
+    t.integer "dict_id", null: false, comment: "大类ID"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dicts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "字典表" do |t|
+    t.string "name", null: false, comment: "大类名称"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
