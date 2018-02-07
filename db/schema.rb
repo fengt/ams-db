@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207083754) do
+ActiveRecord::Schema.define(version: 20180207094743) do
 
   create_table "dict_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "字典明细" do |t|
     t.string "name", null: false, comment: "小类名称"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 20180207083754) do
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "warehouses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "仓库表" do |t|
+    t.string "name", null: false, comment: "仓库名称"
+    t.integer "org_id", null: false, comment: "所属组织ID"
+    t.string "remark", comment: "备注"
+    t.string "updated_by", null: false, comment: "更新人"
+    t.integer "enabled", limit: 1, default: 0, null: false, comment: "是否有效 0:是 1:否"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
