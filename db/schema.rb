@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207033227) do
+ActiveRecord::Schema.define(version: 20180207083754) do
 
   create_table "dict_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "字典明细" do |t|
     t.string "name", null: false, comment: "小类名称"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20180207033227) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "brand", comment: "品牌"
+  end
+
+  create_table "organizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", comment: "组织表" do |t|
+    t.string "name", null: false, comment: "组织名称"
+    t.integer "parent_id", null: false, comment: "所属上级ID"
+    t.integer "level", null: false, comment: "所处层级"
+    t.string "description", comment: "说明"
+    t.integer "enabled", limit: 1, default: 0, null: false, comment: "是否有效 0:是 1:否"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
