@@ -11,6 +11,7 @@ gem 'rails_admin', '~> 1.2'
 gem 'slim-rails'
 gem 'migration_comments'
 gem 'rest-client'
+gem 'config'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
